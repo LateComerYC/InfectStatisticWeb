@@ -51,27 +51,22 @@
 	
 				String[] command = { "list", "-log", "E:\\echarts\\log\\", "-out", "F:\\holiday\\output1.txt", "-date",
 				"2020-01-25" };
-		//		String[] command=null;
 				if(dates!=null){
 					command[6]=dates;
-				}
-			
+				}			
 				Data data = new Data(command); 
 				
-			//	data = new Data(command); 
 			%>
 			
 			var ss=<%=data.getDate()%>;
 			var res=ss.join("-");
-			alert(res);
+			var newStr = res.slice(0,5)+'0'+res.slice(5);
+		
 			var nodee=document.getElementById("date");
-			nodee.setAttribute("value",res);
+			nodee.setAttribute("value",newStr);
 			
 			var mydate=<%=data.getTotal()%>;
 			var mydata=<%=data.getUpdate()%>;
-			
-		//	var mydate=[54017,5200,11340,75888,23415,3751];
-		//	var mydata=["-1335","+3215","-541","+3154","+1247","+118"];
 			var color=["crimson","dimgrey","green","blue","orange","grew"];
 			var topdata=document.getElementsByClassName("top-data");
 			for(var j=0;j<topdata.length;j++){
@@ -121,29 +116,17 @@
 			}
 		</script>
 </div>
-	<div style="
-    margin: 0xp auto;
-    margin: 20px 330px;
-    padding: 15px 25px;
-    background-color: white;
-"><div style="
-    margin: 0px;
-    /* margin-bottom: -5px; */
-    /* padding: 13px; */
-    background-color: #d6d1d0;
-    height: 42px;
-    padding-top: 13px;
-    padding-bottom: -15px;
-    min-width: 800px;
-"><span id="left" >现有确诊</span><span id="right" >累计确诊</span></div></div>
+	<div style="   margin: 0xp auto;   margin: 20px 330px;   padding: 15px 25px;    background-color: white;">
+<div style="    margin: 0px;   background-color: #d6d1d0;   height: 42px;   padding-top: 13px;  padding-bottom: -15px;
+    min-width: 800px;">
+<span id="left" >现有确诊</span><span id="right" >累计确诊</span></div></div>
     <div id="main" style="width: 1200px;height:800px; left: 150px;"></div>
   
     <script type="text/javascript">
     var daupdate = document.getElementById("date");
    	daupdate.onchange=function(){
    		var da = document.getElementById("date").value;
-  		window.location.href="http://localhost:8080/InfectStaticTest1/temp.jsp?date="+da;
- 
+  	//	window.location.href="http://localhost:8080/InfectStaticTest1/temp.jsp?date="+da;
 	}
 function randomData() {  
      return Math.round(Math.random()*10000);  
