@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+	<script type="text/javascript" src="js/echarts.min.js" ></script>
+	<script type="text/javascript" src="js/china.js" ></script>
+</head>
+
+<body>
+	<div id = "varytrend">
+            <h1 id = "header_3">全国疫情变化走向图</h1>
+        </div>
+        <div id="box" style="width: 880px;height: 600px;background-color: white"></div>
+        <script type="text/javascript">
+            var myChart=echarts.init(document.getElementById("box"));
+            var option={
+                //标题
+                title:{
+                    text:"折线图"
+                },
+                //工具箱
+                //保存图片
+                toolbox:{
+                    show:true,
+                    feature:{
+                        saveAsImage:{
+                            show:true
+                        }
+                    }
+                },
+                tooltip:{
+                    trigger: 'axis'
+                },
+                //图例-每一条数据的名字叫销量
+                legend:{
+                    data:['确诊人数（单位：人)','疑似人数（单位：人)',"死亡人数（单位：人)",'治愈人数（单位：人)']
+                },
+                //x轴
+                xAxis:{
+                    name:"日期",
+                    data:["2020-01-22","2020-01-23","2020-01-24","2020-01-25","2020-01-26","2020-01-27","2020-01-28","2020-01-29"
+                        ,"2020-01-30","2020-01-31","2020-02-01","2020-02-02","2020-02-03","2020-02-04","2020-02-05","2020-02-06"
+                        ,"2020-02-07","2020-02-08"
+                    ]
+                    //data:["2020-01-22","2020-01-23","2020-01-24","2020-01-25","2020-01-26","2020-01-27"]
+                },
+                //y轴没有显式设置，根据值自动生成y轴
+                yAxis:{
+                    name:"人数"
+                },
+                //数据-data是最终要显示的数据
+                series:[
+                    {
+                        name:'确诊人数（单位：人)',
+                        type:'line',
+                        data:[23,34,44,59,70,81,120,378,546,739,1490,2541,3562,4571,6591,7621,8631,9641],
+                        smooth: true , //true 为平滑曲线，false为直线
+                        itemStyle : { normal: {label : {show: true}}},
+                        color:"red"
+                    },
+                    {
+                        name:'疑似人数（单位：人)',
+                        type:'line',
+                        data:[50,78,123,190,227,249,326,378,469,679,950,1456,2234,2890,2789,3578,4345,6236],
+                        smooth: true , //true 为平滑曲线，false为直线
+                        itemStyle : { normal: {label : {show: true}}},
+                        color:"orange"
+                    },
+                    {
+                        name:'死亡人数（单位：人)',
+                        type:'line',
+                        data:[0,0,13,25,52,88,115,223,437,467,572,678,782,896,923,978,1134,1296],
+                        smooth: true , //true 为平滑曲线，false为直线
+                        itemStyle : { normal: {label : {show: true}}},
+                        color:"black"
+                    },
+                    {
+                        name:'治愈人数（单位：人)',
+                        type:'line',
+                        data:[0,0,0,64,123,324,387,413,525,689,740,978,1288,1394,1414,2545,3768,3976],
+                        smooth: true , //true 为平滑曲线，false为直线
+                        itemStyle : { normal: {label : {show: true}}},
+                        color:"green"
+                    }
+                ]
+            };
+            //使用刚刚指定的配置项和数据项显示图表
+            myChart.setOption(option);
+        </script>
+	<script src="js/interaction.js" type="text/javascript"></script>
+</body>
+</html>
