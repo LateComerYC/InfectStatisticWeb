@@ -1,6 +1,5 @@
 <%@page import="java.util.Vector"%>
 <%@page import="DataTest.Data"%>
-<%@page import="DataTest.DataTest"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,7 +10,7 @@
 <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache"> 
 <META HTTP-EQUIV="Expires" CONTENT="0">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>全国疫情统计信息</title>
 <script type="text/javascript" src="echarts.js"></script>
 <script type="text/javascript" src="china.js"></script>
 	<style type="text/css"> 
@@ -21,21 +20,18 @@
 		.top-label{list-style-type: none} .top-label li{display: inline;margin: 0px 50px; width: 100px;padding: 0px 50px;}
 		.top-data{list-style-type: none} .top-data li{display: inline;margin: 0px 50px;padding: 0px 45px;font-size: larger;  font-weight: bold;  width: 200px; min-width: 100px;  text-align: left;}
 		.top-update{list-style-type: none;font-size: x-small;margin-top: -20px;} .top-update li{display: inline;margin: 0px 45px;  width: 100px;padding: 0px 50px;}
-		.top-data textarea{border-style: none;resize: none;margin: 0px; width: 70px;background-color: white; text-align: center;font-size: larger;height: 25px; font-weight: 900;	   ;
-   	}
+		.top-data textarea{border-style: none;resize: none;margin: 0px; width: 70px;background-color: white; text-align: center;font-size: larger;height: 25px; font-weight: 900;}
 		.top-update textarea{    border-style: none;   resize: none; margin: 0px;  width: 45px;  background-color: white;  height: 18px; text-align: center;font-size: x-small;height: 15px}
 		.yest{margin-right: 0px;padding-right: 0px;} .yest textarea {padding-right: 0px;margin-right: 0px; width: 25px;}
 		.Yest{    margin-left: 0px;  padding-left: 0px;}	#left{ padding: 0px 150px; margin: 0px; font-size: large;
     letter-spacing: 5px;   background-color: #efefef;   border-radius: 15px;    padding: 13px 150px;   display: inline;
     margin-top: px;  padding-top: 10px;}
-		#right{ padding: 0px 150px;  padding: 0px 150px;  margin: 0px;  font-size: large;  letter-spacing: 5px;  border-radius: 15px;  padding: 13px 150px;  padding: 0px 150px;   margin: 0px;   font-size: large;   letter-spacing: 5px;   background-color: #d6d1d0;   border-radius: 15px;  padding: 13px 150px;   display: inline;  margin-top: px;
-    padding-top: 10px;}
+		#right{ padding: 0px 150px;  padding: 0px 150px;  margin: 0px;  font-size: large;  letter-spacing: 5px;  border-radius: 15px;  padding: 13px 150px;  padding: 0px 150px;   margin: 0px;   font-size: large;   letter-spacing: 5px;   background-color: #d6d1d0;   border-radius: 15px;  padding: 13px 150px;   display: inline;  margin-top: px;   padding-top: 10px;}
 	</style>
 </head>
 <body>
         <div id="top" style="width=1200px;height:250px;min-width: 1200px;">
-		<div id="top-1">更新至  <input id="date" type="text" placeholder="yyyy-mm-dd" value="2020-01-25" style="   border-style: none;    padding-left: 10px;"/>
-			 <label title="dahidha">数据说明</label></div>
+		<div id="top-1">更新至  <input id="date" type="text" placeholder="yyyy-mm-dd" value="2020-01-25" style="   border-style: none;    padding-left: 10px;"/> <label title="dahidha">数据说明</label></div>
 	<div id="top-2">
 		<ul class="top-label"><li>现有确诊</li><li>现有疑似</li><li>现有重症</li></ul>
 		<ul class="top-data"></ul>
@@ -126,7 +122,7 @@
     var daupdate = document.getElementById("date");
    	daupdate.onchange=function(){
    		var da = document.getElementById("date").value;
-  	//	window.location.href="http://localhost:8080/InfectStaticTest1/temp.jsp?date="+da;
+  		window.location.href="http://localhost:8080/InfectStaticTest1/temp.jsp?date="+da;
 	}
 function randomData() {  
      return Math.round(Math.random()*10000);  
@@ -225,8 +221,8 @@ function showEcharts( click){
             	var name = params.name;
             	document.write(name);
             	showEcharts(1);
-//	window.location.href="file:///E:/echarts/pro.html?pro="+name;
-//	document.write("file:///E:/echarts/pro.php?pro="+name);
+	window.location.href="http://localhost:8080/InfectStaticTest1/varytrend.html";
+
         });
 					  }
 		showEcharts(0);
