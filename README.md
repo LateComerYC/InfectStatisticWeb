@@ -10,11 +10,11 @@
 
 ## 项目介绍
      - 结对仓库，仓库名为InfectStatisticWeb，根目录下为README，codestyle文档和main文件夹。
-main文件夹下，为ignore文件以及WEB程序文件，index.jsp,Data.java,temp.jsp,varytrend.html和
-辅助文件china.js echarts.js。
+     main文件夹下，为ignore文件以及WEB程序文件，index.jsp,Data.java,temp.jsp,varytrend.html和
+     辅助文件china.js echarts.js。
      - Data.java实现了读取日志文件，处理文本信息，保存。提供getTotal，getUpdate等函数提供对
-应的全国统计信息，和昨日更新信息等接口。index.jsp渲染中国疫情地图和统计信息表格，调用Data
-提供的接口，载入数据，实现疫情数据的动态加载和可视化。varytrend.html提供全国增长趋势。
+     应的全国统计信息，和昨日更新信息等接口。index.jsp渲染中国疫情地图和统计信息表格，调用Data
+     提供的接口，载入数据，实现疫情数据的动态加载和可视化。varytrend.html提供全国增长趋势。
      - index.jsp可以选择日期，查看不同时间的疫情信息，格式为YYYY-MM-DD。
 
 ## 项目的构建与运行
