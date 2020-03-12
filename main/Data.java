@@ -1,10 +1,5 @@
-package DataTest;
-
 import java.util.*;
-
 import DataTest.Excute.Status;
-
-
 import java.io.InputStream;
 import java.sql.Date;
 import java.text.Collator;
@@ -47,11 +42,6 @@ public class Data {
 
 		return total;
 	}
-/*	public Map<String,Integer> getMap(String pro){
-		Map<String,Integer> map = new HashMap<String, Integer>();
-		
-		
-	}*/
 	public int getMap(String pro){
 		Integer a;
 		Status status=map.get(pro);
@@ -77,8 +67,6 @@ public class Data {
 		Vector<Integer> total = new Vector<>();
 		String string = command[6];
 		String cmd[]=command;
-		// String[] str=string.split("-");
-//		java.util.Date date = new Date(Integer.parseInt(str[0]), Integer.parseInt(str[1]), Integer.parseInt(str[2]));
 		Calendar c = Calendar.getInstance();
 		java.util.Date date = null;
 		try {
@@ -111,76 +99,8 @@ public class Data {
 		return total;
 	}
 
-	private Vector<Integer> getUpdate1(String s, String pro) {
-		Vector<Integer> total = new Vector<>();
-		String string = s;
-		String new_command[]=command;
-		new_command[6]=s;
-		Calendar c = Calendar.getInstance();
-		java.util.Date date = null;
-		try {
-			date = new SimpleDateFormat("yy-MM-dd").parse(string);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		c.setTime(date);
-		int day = c.get(Calendar.DATE);
-		c.set(Calendar.DATE, day - 1);
-		String dayBefore = new SimpleDateFormat("yyyy-MM-dd").format(c.getTime());
-		String old_command[]=command;
-		old_command[6]=dayBefore;
-		
-		DocFormatter docFormatter = new DocFormatter(new_command);
-		Excute ex = new Excute(docFormatter);
-		ex.run();
-		Map<String, Status> map1 = ex.getMap();
-		
-		docFormatter = new DocFormatter(old_command);
-		ex = new Excute(docFormatter);
-		ex.run();
-		Map<String, Status> map2 = ex.getMap();
-		
-		Status s1 = map1.get(pro);
-		Status s2 = map2.get(pro);
-		
-		int a[] = s1.getNum();
-		int b[] =s2.getNum();
-		
-		for (int i = 0; i < 4; i++) {
-			total.add(a[i] - b[i]);
-		}
-		total.add( a[0] + a[2] + a[3] - b[0] - b[2]- b[3]);
-		return total;
-	}
-
-	public Map<String, Vector<Integer>> getPro(String pro) {
-		Map<String, Vector<Integer>> map = new HashMap<>();
-		Vector<Integer> vec = getUpdate();
-		String string = command[6];
-		map.put(string, vec);
-		
-	//	String strs[]=command;
-		
-		for (int i = 0; i < 10; i++) {
-			Calendar c = Calendar.getInstance();
-			java.util.Date date = null;
-			try {
-				date = new SimpleDateFormat("yy-MM-dd").parse(string);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			c.setTime(date);
-			int day = c.get(Calendar.DATE);
-			c.set(Calendar.DATE, day - 1);
-			String dayBefore = new SimpleDateFormat("yyyy-MM-dd").format(c.getTime());
-			
-			string =dayBefore;
-			vec = getUpdate1(dayBefore,pro);
-			map.put(string, vec);
-				
-		}
-		return map;
-	}
+	
+	
 }
 
 class DocFormatter {
@@ -395,27 +315,6 @@ class Excute {
 		return "";
 	};
 
-	/* 将map写入文件,根据docformatter参数，写入指定文件中 */
-	/*
-	 * private void WriteFile(String dest) throws IOException{ OutputStream os = new
-	 * FileOutputStream(dest); PrintWriter pw=new PrintWriter(os); if(ProChecked) {
-	 * //检查是否有指定身份 for(int i=0;i<pro.size();i++) { //补充缺漏 String s=pro.get(i);
-	 * if(!map.containsKey(s)) map.put(s, new Status(s)); } } Set<String>
-	 * set=SortSet(map.keySet()); for(String key : set){ Status status=map.get(key);
-	 * if(key.equals("//")) continue; if(ProChecked) { //检查是否有指定身份
-	 * if(!pro.contains(key)) continue; //非指定身份，continue }
-	 * 
-	 * if(TyChecked) { pw.print(key); for(int i=0;i<4;i++) {
-	 * if(tyChecked[i].equals("感染患者")) pw.print(" 感染患者"+status.ip +"人"); else
-	 * if(tyChecked[i].equals("疑似患者")) pw.print(" 疑似患者"+status.sp +"人"); else
-	 * if(tyChecked[i].equals("治愈")) pw.print(" 治愈"+status.cure +"人"); else
-	 * if(tyChecked[i].equals("死亡")) pw.print(" 死亡"+status.dead +"人"); else {}
-	 * 
-	 * };
-	 * 
-	 * pw.print("\n"); } else pw.print(key +" 感染患者"+status.ip+"人 疑似患者"+status.sp+
-	 * "人 治愈"+status.cure+"人 死亡"+status.dead+"人 \n"); } pw.close(); }
-	 */
 	private Vector<String> getFiles(String date, String source) {
 		Vector<String> vec = new Vector<>();
 		String basePath = source;
