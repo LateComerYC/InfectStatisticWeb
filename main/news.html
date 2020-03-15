@@ -1,0 +1,367 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+	<style type="text/css"> 
+		html * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 100%;
+  color: #7f8c97;
+  background:url(http://fivepx.net/themes/html/images/content_bg.png);
+}
+
+
+
+img {
+  max-width: 100%;
+}
+
+/* -------------------------------- 
+
+Modules - reusable parts of our design
+
+-------------------------------- */
+.cd-container {
+  /* this class is used to give a max-width to the element it is applied to, and center it horizontally when it reaches that max-width */
+  width: 90%;
+  max-width: 1170px;
+  margin: 0 auto;
+}
+.cd-container::after {
+  /* clearfix */
+  content: '';
+  display: table;
+  clear: both;
+}
+
+/* -------------------------------- 
+
+Main components 
+
+-------------------------------- */
+
+#cd-timeline {
+  position: relative;
+  padding: 2em 0;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+#cd-timeline::before {
+  /* this is the vertical line */
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 18px;
+  height: 100%;
+  width: 4px;
+  background: #d7e4ed;
+}
+@media only screen and (min-width: 1170px) {
+  #cd-timeline {
+    margin-top: 3em;
+    margin-bottom: 3em;
+  }
+  #cd-timeline::before {
+    left: 50%;
+    margin-left: -2px;
+  }
+}
+
+.cd-timeline-block {
+  position: relative;
+  margin: 2em 0;
+}
+.cd-timeline-block:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.cd-timeline-block:first-child {
+  margin-top: 0;
+}
+.cd-timeline-block:last-child {
+  margin-bottom: 0;
+}
+@media only screen and (min-width: 1170px) {
+  .cd-timeline-block {
+    margin: 4em 0;
+  }
+  .cd-timeline-block:first-child {
+    margin-top: 0;
+  }
+  .cd-timeline-block:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.cd-timeline-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px white, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);
+}
+.cd-timeline-img img {
+  display: block;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  margin-left: -12px;
+  margin-top: -12px;
+}
+.cd-timeline-img.cd-picture {
+  background: #75ce66;
+}
+.cd-timeline-img.cd-movie {
+  background: #c03b44;
+}
+.cd-timeline-img.cd-location {
+  background: #f0ca45;
+}
+@media only screen and (min-width: 1170px) {
+  .cd-timeline-img {
+    width: 60px;
+    height: 60px;
+    left: 50%;
+    margin-left: -30px;
+    /* Force Hardware Acceleration in WebKit */
+    -webkit-transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+  }
+  .cssanimations .cd-timeline-img.is-hidden {
+    visibility: hidden;
+  }
+  .cssanimations .cd-timeline-img.bounce-in {
+    visibility: visible;
+    -webkit-animation: cd-bounce-1 0.6s;
+    -moz-animation: cd-bounce-1 0.6s;
+    animation: cd-bounce-1 0.6s;
+  }
+}
+
+.cd-timeline-content {
+  position: relative;
+  margin-left: 60px;
+  background: white;
+  border-radius: 0.25em;
+  padding: 1em;
+  box-shadow: 0 3px 0 #d7e4ed;
+}
+.cd-timeline-content:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.cd-timeline-content h2 {
+  color: #303e49;
+}
+.cd-timeline-content p, .cd-timeline-content .cd-read-more, .cd-timeline-content .cd-date {
+  font-size: 13px;
+  font-size: 0.8125rem;
+}
+.cd-timeline-content .cd-read-more, .cd-timeline-content .cd-date {
+  display: inline-block;
+}
+.cd-timeline-content p {
+  margin: 1em 0;
+  line-height: 1.6;
+}
+.cd-timeline-content .cd-read-more {
+  float: right;
+  padding: .8em 1em;
+  background: #acb7c0;
+  color: white;
+  border-radius: 0.25em;
+}
+.no-touch .cd-timeline-content .cd-read-more:hover {
+  background-color: #bac4cb;  
+}
+a.cd-read-more:hover{text-decoration:none; background-color: #424242;  }
+.cd-timeline-content .cd-date {
+  float: left;
+  padding: .8em 0;
+  opacity: .7;
+}
+.cd-timeline-content::before {
+  content: '';
+  position: absolute;
+  top: 16px;
+  right: 100%;
+  height: 0;
+  width: 0;
+  border: 7px solid transparent;
+  border-right: 7px solid white;
+}
+@media only screen and (min-width: 768px) {
+  .cd-timeline-content h2 {
+    font-size: 20px;
+    font-size: 1.25rem;
+  }
+  .cd-timeline-content p {
+    font-size: 16px;
+    font-size: 1rem;
+  }
+  .cd-timeline-content .cd-read-more, .cd-timeline-content .cd-date {
+    font-size: 14px;
+    font-size: 0.875rem;
+  }
+}
+@media only screen and (min-width: 1170px) {
+  .cd-timeline-content {
+    margin-left: 0;
+    padding: 1.6em;
+    width: 45%;
+  }
+  .cd-timeline-content::before {
+    top: 24px;
+    left: 100%;
+    border-color: transparent;
+    border-left-color: white;
+  }
+  .cd-timeline-content .cd-read-more {
+    float: left;
+  }
+  .cd-timeline-content .cd-date {
+    position: absolute;
+    width: 100%;
+    left: 122%;
+    top: 6px;
+    font-size: 16px;
+    font-size: 1rem;
+  }
+  .cd-timeline-block:nth-child(even) .cd-timeline-content {
+    float: right;
+  }
+  .cd-timeline-block:nth-child(even) .cd-timeline-content::before {
+    top: 24px;
+    left: auto;
+    right: 100%;
+    border-color: transparent;
+    border-right-color: white;
+  }
+  .cd-timeline-block:nth-child(even) .cd-timeline-content .cd-read-more {
+    float: right;
+  }
+  .cd-timeline-block:nth-child(even) .cd-timeline-content .cd-date {
+    left: auto;
+    right: 122%;
+    text-align: right;
+  }
+  .cssanimations .cd-timeline-content.is-hidden {
+    visibility: hidden;
+  }
+  .cssanimations .cd-timeline-content.bounce-in {
+    visibility: visible;
+    -webkit-animation: cd-bounce-2 0.6s;
+    -moz-animation: cd-bounce-2 0.6s;
+    animation: cd-bounce-2 0.6s;
+  }
+}
+
+@media only screen and (min-width: 1170px) {
+  /* inverse bounce effect on even content blocks */
+  .cssanimations .cd-timeline-block:nth-child(even) .cd-timeline-content.bounce-in {
+    -webkit-animation: cd-bounce-2-inverse 0.6s;
+    -moz-animation: cd-bounce-2-inverse 0.6s;
+    animation: cd-bounce-2-inverse 0.6s;
+  }
+}
+
+ 
+	</style> 
+</head>
+	
+<body>
+	<div class="new">
+        <div>
+            <h1>新闻速报</h1>
+        </div>
+        <section id="cd-timeline" class="cd-container">
+            <div class="cd-timeline-block">
+                <div class="cd-timeline-img cd-picture">
+                    <img src="img/cd-icon-picture.svg" alt="Picture">
+                </div>
+
+                <div class="cd-timeline-content">
+                    <h2>韩国疫情急剧恶化！“祸根”被骂上热搜</h2>
+                    <p>中国湖北外省区市新增确诊病例，连续16天下降，让社会高度紧张的情绪得以稍稍缓解。然而，就在20日，中国的两个近邻——韩国和日本的疫情却出现了快速恶化。尤其韩国，两天内确诊病例激增235%，它会成为第二个日本吗？
+
+　　韩国的情况还有一个特殊之处：疫情突然告急，祸起一家xiejiao。令人背脊发凉的是，这家xiejiao还曾经到中国来祸害过。20日，成千上万的韩国人在网上倾泻对这个“祸根”的怒火。</p>
+                    <a href="https://news.sina.com.cn/w/2020-02-21/doc-iimxyqvz4572829.shtml" class="cd-read-more" target="_blank">阅读全文</a>
+                    <span class="cd-date">2020-03-10 14:13</span>
+                </div>
+            </div>
+            <div class="cd-timeline-block">
+                <div class="cd-timeline-img cd-movie">
+                    <img src="img/cd-icon-movie.svg" alt="Movie">
+                </div>
+
+                <div class="cd-timeline-content">
+                    <h2>日本疫情蔓延！口罩脱销…政府紧急升级应对措施</h2>
+                    <p>2月17日，日本央行行长黑田东彦（Haruhiko Kuroda）表示，疫情是日本经济“最大的不确定性”。如果疫情严重威胁日本经济和物价走势，日本央行将考虑采取额外宽松措施。</p>
+                    <a href="https://money.163.com/20/0218/19/F5MJTV06002580S6.html" class="cd-read-more" target="_blank">阅读全文</a>
+                    <span class="cd-date">2020-03-10 17:20</span>
+                </div>
+            </div>
+            <div class="cd-timeline-block">
+                <div class="cd-timeline-img cd-picture">
+                    <img src="img/cd-icon-picture.svg" alt="Picture">
+                </div>
+
+                <div class="cd-timeline-content">
+                    <h2>意大利新冠疫情致11城关闭，“无国界”的欧洲如何防控 </h2>
+                    <p>在2月21日之前，意大利新冠肺炎确诊病例仅3例。然而，两天的时间，这一数据骤增，截至2月23日确诊病例已达到117例。
+
+在这117例确诊病例中，2例已经死亡，分别是1名78岁的意大利籍男性患者和1名75岁的意大利籍女性患者。
+
+至此，意大利成为欧洲确诊病例数最多的国家，几乎占到整个欧洲确诊病例的70%。2名死亡病例也是欧洲首次出现本国公民死亡病例。此前，法国曾报告1例死亡病例，但该患者来自中国武汉</p>
+                    <a href="https://news.sina.com.cn/c/2020-02-23/doc-iimxxstf3810680.shtml" class="cd-read-more" target="_blank">阅读全文</a>
+                    <span class="cd-date">2020-03-10 12:40</span>
+                </div>
+            </div>
+            <div class="cd-timeline-block">
+                <div class="cd-timeline-img cd-movie">
+                    <img src="img/cd-icon-movie.svg" alt="Movie">
+                </div>
+
+                <div class="cd-timeline-content">
+                    <h2>新冠肺炎下的“疫苗赛跑”</h2>
+                    <p>近日，一条“全世界第一支新冠状病毒疫苗阶段性成功注射到发明人陈薇院士的左臂上”的微博广泛流传，该微博还配有一张陈薇单手叉腰、
+                        在手臂注射针剂的照片。陈薇是中国工程院院士、军事医学研究院研究员，1月26日带领团队进驻武汉。</p>
+                    <a href="https://www.sohu.com/a/378057217_114988?_trans_=000014_bdss_dkwhfy" class="cd-read-more" target="_blank">阅读全文</a>
+                    <span class="cd-date">2020-03-06 13:16</span>
+                </div>
+            </div>
+            <div class="cd-timeline-block">
+                <div class="cd-timeline-img cd-movie">
+                    <img src="img/cd-icon-location.svg" alt="Location">
+                </div>
+
+                <div class="cd-timeline-content">
+                    <h2>欧盟27国均现疫情，意大利病例近万封闭全国、囚犯越狱</h2>
+                    <p>塞浦路斯卫生部长约安努9日表示，塞浦路斯首次发现2例新冠肺炎确诊病例，均为输入型病例，
+                        两位患者分别从英国和意大利返回塞浦路斯。 至此，欧盟27个成员国均出现了新冠肺炎病例，其中意大利病例近万，
+                        法国和西班牙的感染人数破千。</p>
+                    <a href="http://news.sina.com.cn/w/2020-03-10/doc-iimxxstf7976870.shtml" class="cd-read-more" target="_blank">阅读全文</a>
+                    <span class="cd-date">2020年03月10日 20:36</span>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
