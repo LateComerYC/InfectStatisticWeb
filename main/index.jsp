@@ -11,7 +11,7 @@
 <META HTTP-EQUIV="Expires" CONTENT="0">
 <meta charset="UTF-8">
 <title>全国疫情统计信息</title>
-<script type="text/javascript" src="echarts.js"></script>
+<script type="text/javascript" src="echarts.min.js"></script>
 <script type="text/javascript" src="china.js"></script>
 	<style type="text/css"> 
 		#top{padding-left: 300px;}
